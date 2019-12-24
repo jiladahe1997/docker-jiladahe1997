@@ -1,0 +1,23 @@
+FROM centos:7
+
+WORKDIR /usr/src/app
+COPY kong.conf .
+COPY kong.yml .
+RUN  yum update -y && \
+      yum install -y wget && \
+      wget https://bintray.com/kong/kong-rpm/rpm -O bintray-kong-kong-rpm.repo && \
+      export major_version=`grep -oE '[0-9]+\.[0-9]+' /etc/redhat-release | cut -d "." -f1` && \
+      sed -i -e 's/baseurl.*/&\/centos\/'$major_version''/ bintray-kong-kong-rpm.repo && \
+      mv bintray-kong-kong-rpm.repo /etc/yum.repos.d/ && \
+      yum update -y && \
+      yum install -y kong
+
+RUN export KONG_DATABASE = off && \
+      export KONG_DECLARATIVE_CONFIG = /usr/src/app/kong.conf
+
+RUN kong start -c kong.conf
+
+EXPOSE 80
+EXPOSE 443
+EXPOSE 8001
+EXPOSE 8444
