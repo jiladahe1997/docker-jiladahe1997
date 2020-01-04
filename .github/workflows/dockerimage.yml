@@ -11,5 +11,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jiladahe1997/nginx-proxy:latest && \
-           docker push jiladahe1997/nginx-proxy:latest
+      run: cd nginx0-proxxy && docker build . --file Dockerfile --tag jiladahe1997/nginx-proxy:latest && docker push jiladahe1997/nginx-proxy:latest
