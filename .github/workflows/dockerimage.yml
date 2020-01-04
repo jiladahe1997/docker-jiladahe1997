@@ -14,4 +14,5 @@ jobs:
       run: |
            cd nginx-proxy 
            docker build . --file Dockerfile --tag jiladahe1997/nginx-proxy:latest
+           docker login -u jiladahe1997 -p ${{secrets.dockerPassword}}
            docker push jiladahe1997/nginx-proxy:latest
