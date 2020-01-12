@@ -1,0 +1,18 @@
+name: nginx-main-CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+           cd nginx-main 
+           docker build . --file Dockerfile --tag jiladahe1997/nginx:latest
+           docker login -u jiladahe1997 -p ${{secrets.dockerPassword}}
+           docker push jiladahe1997/nginx:latest
