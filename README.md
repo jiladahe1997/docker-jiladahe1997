@@ -3,7 +3,7 @@ A docker set for my website, including nginx、nodejs、and java
 
 
 # 简介 
-## nginx-main：
+## nginx-main： 
 
 docker-hub地址：https://hub.docker.com/r/jiladahe1997/nginx
 
