@@ -15,6 +15,8 @@ docker-hub地址：https://hub.docker.com/r/jiladahe1997/nginx-proxy
 
 此docker是用于亚马逊服务器转发到阿里云服务器，用于绕过国内域名必须备案的限制。
 
+运行命令（带ssl证书）：docker run -dt -p 80:80 -p 443:443 -v /etc/letsencrypt/archive/jiladahe1997.cn:/usr/src/app/ssl_certificate jiladahe1997/nginx-proxy
+
 # 自动化CI:
 
 通过github action，实现半自动CI，详情见目录下的：.github/workflows。
