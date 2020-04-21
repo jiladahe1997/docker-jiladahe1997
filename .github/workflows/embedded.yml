@@ -13,6 +13,6 @@ jobs:
     - name: Build the Docker image
       run: |
            cd nginx-embeddedproxy
-           docker build . --file Dockerfile --tag jiladahe1997/nginx-embeddedproxy:latest
+           docker build . --file dockerfile --tag jiladahe1997/nginx-embeddedproxy:latest
            docker login -u jiladahe1997 -p ${{secrets.dockerPassword}}
            docker push jiladahe1997/nginx-embeddedproxy:latest
